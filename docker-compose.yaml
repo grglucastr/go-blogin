@@ -1,0 +1,13 @@
+version: '3'
+services:
+  db:
+    container_name: goblogindb
+    image: mysql:latest
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=thepass
+      - MYSQL_DATABASE=go-blogin
+      - MYSQL_USER=theuser
+    volumes:
+      - "./data:/var/lib/mysql"
