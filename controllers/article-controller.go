@@ -18,8 +18,7 @@ func NewArticleController(articleDAO *dao.ArticleDAO) *ArticleController {
 	}
 }
 
-
-func (ac *ArticleController) PostArticle(r *http.Request, w http.ResponseWriter){
+func (ac *ArticleController) PostArticle(w http.ResponseWriter, r *http.Request) {
 	var article models.Article
 
 	err := json.NewDecoder(r.Body).Decode(&article)
