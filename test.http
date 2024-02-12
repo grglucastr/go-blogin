@@ -1,0 +1,9 @@
+POST http://localhost:8080/articles HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "id": "c7e95c46-feab-421d-8af7-a47bae261aa7",
+  "title": "Gus is bored",
+  "content": "Gotta take my dog Gus for a walk, he is very bored at home!!!"
+}
