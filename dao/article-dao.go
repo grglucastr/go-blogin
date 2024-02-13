@@ -50,3 +50,17 @@ func (ad *ArticleDAO) ListAll() ([]*models.Article, error) {
 
 	return articles, nil
 }
+
+func (ad *ArticleDAO) GetById(uuid string) (*models.Article, error) {
+
+	var article models.Article
+	var sql string = "SELECT id, title, content FROM articles WHERE id = ?"
+
+	err := ad.db.QueryRow(sql, uuid).Scan(&article.ID, &article.Title, &article.Content)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &article, nil
+}

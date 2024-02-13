@@ -26,6 +26,7 @@ func main() {
 	c := chi.NewRouter()
 	c.Post("/articles", articleController.PostArticle)
 	c.Get("/articles", articleController.ListArticles)
+	c.Get("/articles/{id}", articleController.GetById)
 
 	fmt.Println("Server is runnint on port 8080")
 

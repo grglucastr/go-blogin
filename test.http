@@ -13,3 +13,8 @@ Content-Type: application/json
 GET http://localhost:8080/articles HTTP/1.1
 Host: locahost:8080
 Accept: application/json
+
+### Get article by id
+GET http://localhost:8080/articles/54168145-689b-4b18-86c6-dc32ce34a032 HTTP/1.1
+Host: localhost:8080
+Accept: application/json

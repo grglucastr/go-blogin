@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
+	"github.com/go-chi/chi/v5"
 	"github.com/grglucastr/go-blogin/dao"
 	"github.com/grglucastr/go-blogin/models"
 )
@@ -38,8 +39,7 @@ func (ac *ArticleController) PostArticle(w http.ResponseWriter, r *http.Request)
 	json.NewEncoder(w).Encode(result)
 }
 
-
-func (ac *ArticleController) ListArticles(w http.ResponseWriter, r *http.Request){
+func (ac *ArticleController) ListArticles(w http.ResponseWriter, r *http.Request) {
 	articles, err := ac.articleDAO.ListAll()
 
 	if err != nil {
@@ -48,4 +48,16 @@ func (ac *ArticleController) ListArticles(w http.ResponseWriter, r *http.Request
 	}
 
 	json.NewEncoder(w).Encode(articles)
+}
+
+func (ac *ArticleController) GetById(w http.ResponseWriter, r *http.Request) {
+	id := chi.URLParam(r, "id")
+	article, err := ac.articleDAO.GetById(id)
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	json.NewEncoder(w).Encode(article)
 }
