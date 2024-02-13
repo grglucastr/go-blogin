@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/google/uuid"
 	"github.com/grglucastr/go-blogin/dao"
 	"github.com/grglucastr/go-blogin/models"
 )
@@ -29,6 +30,8 @@ func (ac *ArticleController) PostArticle(w http.ResponseWriter, r *http.Request)
 		return
 	}
 
+	id, _ := uuid.NewRandom()
+	article.ID = id.String()
 	result, err := ac.articleDAO.Save(&article)
 
 	if err != nil {
