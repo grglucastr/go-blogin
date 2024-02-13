@@ -37,3 +37,15 @@ func (ac *ArticleController) PostArticle(w http.ResponseWriter, r *http.Request)
 
 	json.NewEncoder(w).Encode(result)
 }
+
+
+func (ac *ArticleController) ListArticles(w http.ResponseWriter, r *http.Request){
+	articles, err := ac.articleDAO.ListAll()
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	json.NewEncoder(w).Encode(articles)
+}
