@@ -2,7 +2,6 @@ package dao
 
 import (
 	"database/sql"
-
 	"github.com/grglucastr/go-blogin/models"
 )
 

@@ -57,8 +57,13 @@ func (ac *ArticleController) GetById(w http.ResponseWriter, r *http.Request) {
 	id := chi.URLParam(r, "id")
 	article, err := ac.articleDAO.GetById(id)
 
-	if err != nil {
+	if err != nil && err.Error() != "sql: no rows in result set" {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	if err.Error() == "sql: no rows in result set" {
+		w.WriteHeader(http.StatusNotFound)
 		return
 	}
 
