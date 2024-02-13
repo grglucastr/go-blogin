@@ -24,9 +24,11 @@ func main() {
 	articleController := controllers.NewArticleController(articleDAO)
 
 	c := chi.NewRouter()
+
 	c.Post("/articles", articleController.PostArticle)
 	c.Get("/articles", articleController.ListArticles)
 	c.Get("/articles/{id}", articleController.GetById)
+	c.Delete("/articles/{id}", articleController.DeleteById)
 
 	fmt.Println("Server is runnint on port 8080")
 

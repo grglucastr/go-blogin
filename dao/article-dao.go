@@ -64,3 +64,10 @@ func (ad *ArticleDAO) GetById(uuid string) (*models.Article, error) {
 
 	return &article, nil
 }
+
+
+func (ad *ArticleDAO) DeleteById(uuid string) (error) {
+
+	_, err := ad.db.Exec("DELETE FROM articles WHERE id = ?", uuid)
+	return err
+}

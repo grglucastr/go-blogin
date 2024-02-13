@@ -64,3 +64,16 @@ func (ac *ArticleController) GetById(w http.ResponseWriter, r *http.Request) {
 
 	json.NewEncoder(w).Encode(article)
 }
+
+func (ac *ArticleController) DeleteById(w http.ResponseWriter, r *http.Request) {
+	uuid := chi.URLParam(r, "id")
+
+	err := ac.articleDAO.DeleteById(uuid)
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	w.WriteHeader(http.StatusNoContent)
+}
