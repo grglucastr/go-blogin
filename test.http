@@ -15,12 +15,12 @@ Host: locahost:8080
 Accept: application/json
 
 ### Get article by id
-GET http://localhost:8080/articles/8920957d-a15b-4ef0-8c00-e035ce062111 HTTP/1.1
+GET http://localhost:8080/articles/c7e95c46-feab-421e-8af7-a47bae261aa7 HTTP/1.1
 Host: localhost:8080
 Accept: application/json
 
 
 ### Delete article by id
-DELETE  http://localhost:8080/articles/8920957d-a15b-4ef0-8c00-e035ce062111 HTTP/1.1
+DELETE  http://localhost:8080/articles/c7e95c46-feab-421e-8af7-a47bae261aa7 HTTP/1.1
 Host: localhost:8080
 Accept: application/json

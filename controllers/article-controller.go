@@ -62,7 +62,7 @@ func (ac *ArticleController) GetById(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if err.Error() == "sql: no rows in result set" {
+	if err != nil && err.Error() == "sql: no rows in result set" {
 		w.WriteHeader(http.StatusNotFound)
 		return
 	}
